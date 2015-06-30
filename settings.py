@@ -100,7 +100,7 @@ SESSION_TYPE_DEFAULTS = {
     'participation_fee': 10.00,
     'num_bots': 12,
     'doc': "",
-    'group_by_arrival_time': False,
+    'group_by_arrival_time': True,
     'mturk_hit_settings': {
         'keywords': ['easy', 'bonus', 'choice', 'study'],
         'title': 'Title for your experiment',
@@ -117,7 +117,7 @@ SESSION_TYPES = [
         'name': 'public_goods',
         'display_name': "Public Goods",
         'num_demo_participants': 3,
-        'app_sequence': ['public_goods', 'payment_info'],
+        'app_sequence': ['public_goods', 'payment_info']
     },
     {
         'name': 'public_goods_simple',
