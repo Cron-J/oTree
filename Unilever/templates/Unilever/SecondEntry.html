@@ -1,0 +1,22 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Please answer the following question:
+{% endblock %}
+
+{% block content %}
+
+<!--
+Documentation on how to write a django template here:
+https://docs.djangoproject.com/en/dev/topics/templates/
+
+Bootstrap comes pre-loaded, so you can use any Bootstrap elements:
+http://getbootstrap.com/components/
+
+-->
+    {% formfield player.likelihood_to_buy with label="How likely is it that you would buy this chocolate <strong>produced with 100% sustainable inputs</strong>?" %}
+
+    {% next_button %}
+
+{% endblock %}

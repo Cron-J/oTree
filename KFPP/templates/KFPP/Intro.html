@@ -1,0 +1,49 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+{% block content %}
+
+<!--
+Documentation on how to write a django template here:
+https://docs.djangoproject.com/en/dev/topics/templates/
+
+Bootstrap comes pre-loaded, so you can use any Bootstrap elements:
+http://getbootstrap.com/components/
+
+-->
+    
+    <p>
+        In this task you will be grouped with 2 other participants. Therefore, the group
+        consists of three members: A (you), B and C. Each of you will go through three
+        consecutive steps:
+
+        <ol>
+            <li>
+                Everyone in your group will be asked how much he or she is willing to
+                pay for a certain sustainable product.
+            </li>
+            <li>
+                Then your willingness to pay will be communicated to group member B,
+                and you will learn the willingness to pay of C.
+            </li>
+            <li>
+                Finally, you will be asked to predict the willingness to pay of B.
+            </li>
+        </ol>
+    </p>
+    <p>
+        So, what do you know when you predict the willingness to pay for B in Step 3?
+        Your own willingness to pay and that of C.
+    </p>
+    <p>
+        See the picture below:
+    </p>
+
+    <img src="{% static "KFPP/KFPP_picture.jpg" %}" width="90%">
+    {% next_button %}
+
+{% endblock %}

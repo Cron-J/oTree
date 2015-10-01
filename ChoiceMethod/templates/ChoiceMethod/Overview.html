@@ -1,0 +1,26 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Overview of the experiment
+{% endblock %}
+
+{% block content %}
+
+<!--
+Documentation on how to write a django template here:
+https://docs.djangoproject.com/en/dev/topics/templates/
+
+Bootstrap comes pre-loaded, so you can use any Bootstrap elements:
+http://getbootstrap.com/components/
+
+-->
+    
+    <p>
+        The experiment consists of two parts.
+        In the first part you will have to make a number of decisions. The second part is a questionnaire.
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Payment information
+{% endblock %}
+
+{% block content %}
+
+<!--
+Documentation on how to write a django template here:
+https://docs.djangoproject.com/en/dev/topics/templates/
+
+Bootstrap comes pre-loaded, so you can use any Bootstrap elements:
+http://getbootstrap.com/components/
+
+-->
+    
+    <p>
+        For this task you get a fixed payment of {{Constants.endowment}}.
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

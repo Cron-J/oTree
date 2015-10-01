@@ -1,30 +1,26 @@
 import os
 
 import dj_database_url
-from boto.mturk.qualification import (LocaleRequirement,
-                                      PercentAssignmentsApprovedRequirement,
-                                      NumberHitsApprovedRequirement)
+from boto.mturk import qualification
 
 import otree.settings
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-
-if os.environ.get('OTREE_PRODUCTION') in {None, '', '0'}:
-    DEBUG = True
-else:
+# OTREE_PRODUCTION just controls whether Django runs in
+# DEBUG mode. If OTREE_PRODUCTION==1, then DEBUG=False
+if os.environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
     DEBUG = False
-
-if os.environ.get('IS_OTREE_DOT_ORG') in {None, '', '0'}:
-    ADMIN_PASSWORD = 'otree'
-    # don't share this with anybody.
-    # Change this to something unique (e.g. mash your keyboard),
-    # and then delete this comment.
-    SECRET_KEY = 'zzzzzzzzzzzzzzzzzzzzzzzzzzz'
 else:
-    ADMIN_PASSWORD = os.environ['OTREE_ADMIN_PASSWORD']
-    SECRET_KEY = os.environ['OTREE_SECRET_KEY']
+    DEBUG = True
+
+ADMIN_USERNAME = 'admin'
+ADMIN_PASSWORD = 'otree'
+# don't share this with anybody.
+# Change this to something unique (e.g. mash your keyboard),
+# and then delete this comment.
+SECRET_KEY = 'zzzzzzzzzzzzzzzzzzzzzzzzzzz'
 
 PAGE_FOOTER = ''
 
@@ -34,19 +30,33 @@ DATABASES = {
     )
 }
 
+# AUTH_LEVEL:
+# If you are launching an experiment and want visitors to only be able to
+# play your app if you provided them with a start link, set the
+# environment variable OTREE_AUTH_LEVEL to EXPERIMENT.
+# If you would like to put your site online in public demo mode where
+# anybody can play a demo version of your game, set OTREE_AUTH_LEVEL
+# to DEMO. This will allow people to play in demo mode, but not access
+# the full admin interface.
 
-ADMIN_USERNAME = 'admin'
 AUTH_LEVEL = os.environ.get('OTREE_AUTH_LEVEL')
+
+# ACCESS_CODE_FOR_DEFAULT_SESSION:
+# If you have a "default session" set,
+# then an access code will be appended to the URL for authentication.
+# You can change this as frequently as you'd like,
+# to prevent unauthorized server access.
+
 ACCESS_CODE_FOR_DEFAULT_SESSION = 'my_access_code'
 
-# settting for intergration with AWS Mturk
+# setting for integration with AWS Mturk
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 
 
 # e.g. EUR, CAD, GBP, CHF, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'USD'
-USE_POINTS = True
+USE_POINTS = False
 
 
 # e.g. en-gb, de-de, it-it, fr-fr.
@@ -89,17 +99,29 @@ DEMO_PAGE_INTRO_TEXT = """
 # and also in docs for boto:
 # https://boto.readthedocs.org/en/latest/ref/mturk.html?highlight=mturk#module-boto.mturk.qualification
 
-MTURK_WORKER_REQUIREMENTS = [
-    LocaleRequirement("EqualTo", "US"),
-    PercentAssignmentsApprovedRequirement("GreaterThanOrEqualTo", 50),
-    NumberHitsApprovedRequirement("GreaterThanOrEqualTo", 5)
-]
+mturk_hit_settings = {
+    'keywords': ['easy', 'bonus', 'choice', 'study'],
+    'title': 'Title for your experiment',
+    'description': 'Description for your experiment',
+    'frame_height': 500,
+    'preview_template': 'global/MTurkPreview.html',
+    'minutes_allotted_per_assignment': 60,
+    'expiration_hours': 7*24, # 7 days
+    #'grant_qualification_id': 'YOUR_QUALIFICATION_ID_HERE',# to prevent retakes
+    'qualification_requirements': [
+        qualification.LocaleRequirement("EqualTo", "US"),
+        qualification.PercentAssignmentsApprovedRequirement("GreaterThanOrEqualTo", 50),
+        qualification.NumberHitsApprovedRequirement("GreaterThanOrEqualTo", 5),
+        #qualification.Requirement('YOUR_QUALIFICATION_ID_HERE', 'DoesNotExist')
+    ]
+}
 
-SESSION_TYPE_DEFAULTS = {
+SESSION_CONFIG_DEFAULTS = {
     'real_world_currency_per_point': 0.01,
     'participation_fee': 10.00,
     'num_bots': 12,
     'doc': "",
+
     'group_by_arrival_time': True,
     'mturk_hit_settings': {
         'keywords': ['easy', 'bonus', 'choice', 'study'],
@@ -110,9 +132,10 @@ SESSION_TYPE_DEFAULTS = {
         'minutes_allotted_per_assignment': 60,
         'expiration_hours': 7*24, # 7 days
     },
+
 }
 
-SESSION_TYPES = [
+SESSION_CONFIGS = [
     {
         'name': 'public_goods',
         'display_name': "Public Goods",
@@ -130,6 +153,12 @@ SESSION_TYPES = [
         'display_name': "Trust Game",
         'num_demo_participants': 2,
         'app_sequence': ['trust', 'payment_info'],
+    },
+    {
+        'name': 'trust_simple',
+        'display_name': "Trust Game (simple version from tutorial)",
+        'num_demo_participants': 2,
+        'app_sequence': ['trust_simple'],
     },
     {
         'name': 'beauty',
@@ -219,6 +248,14 @@ SESSION_TYPES = [
         ],
     },
     {
+        'name': 'matching_pennies_tutorial',
+        'display_name': "Matching Pennies (tutorial version)",
+        'num_demo_participants': 2,
+        'app_sequence': [
+            'matching_pennies_tutorial',
+        ],
+    },
+    {
         'name': 'traveler_dilemma',
         'display_name': "Traveler's Dilemma",
         'num_demo_participants': 2,
@@ -274,6 +311,30 @@ SESSION_TYPES = [
         'app_sequence': [
             'lemon_market', 'payment_info'
         ],
+    },
+    {
+        'name': 'KFPP',
+        'display_name': "KFPP",
+        'num_demo_participants': 3,
+        'app_sequence': ['KFPP', 'payment_info'],
+    },
+    {
+        'name': 'ChoiceMethod',
+        'display_name': "ChoiceMethod",
+        'num_demo_participants': 3,
+        'app_sequence': ['ChoiceMethod', 'payment_info'],
+    },
+    {
+        'name': 'ChoiceHypothetical',
+        'display_name': "ChoiceHypothetical",
+        'num_demo_participants': 3,
+        'app_sequence': ['ChoiceHypothetical', 'payment_info'],
+    },
+    {
+        'name': 'Unilever',
+        'display_name': "Unilever",
+        'num_demo_participants': 3,
+        'app_sequence': ['Unilever', 'payment_info'],
     },
 ]
 

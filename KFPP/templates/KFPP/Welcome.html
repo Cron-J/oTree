@@ -1,0 +1,42 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Welcome to this experiment
+{% endblock %}
+
+{% block content %}
+
+<!--
+Documentation on how to write a django template here:
+https://docs.djangoproject.com/en/dev/topics/templates/
+
+Bootstrap comes pre-loaded, so you can use any Bootstrap elements:
+http://getbootstrap.com/components/
+
+-->
+    <p>
+        Please read the following instructions carefully.
+        The instructions state everything you need to know in
+        order to participate in the experiment. If you have any
+        questions, please raise your hand. One of the experimenters
+        will approach you in order to answer your question.
+    </p>
+    <p>
+        You can earn money during the experiment. The amount of money that
+        you earn depends on your own choices and the choices of other
+        participants.
+    </p>
+    <p>
+        The money you earn will be paid out in cash at the end of the
+        experiment without other participants being able to see how much
+        you earned. Further instructions on this will follow in due time.
+        During the experiment you are not allowed to communicate with
+        other participants. Turn off your mobile phone and put it in your bag.
+        Also, you may only use the functions on the screen that are necessary
+        to carry out the experiment. Thank you very much.
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

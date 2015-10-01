@@ -1,0 +1,27 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Report
+{% endblock %}
+
+{% block content %}
+
+<!--
+Documentation on how to write a django template here:
+https://docs.djangoproject.com/en/dev/topics/templates/
+
+Bootstrap comes pre-loaded, so you can use any Bootstrap elements:
+http://getbootstrap.com/components/
+
+-->
+
+    <p>
+        You are group member {{role}} . Group member {{reference_role}}
+        reported to be maximally willing to pay {{reference_willingness_to_pay}}.
+    </p>
+
+    {% next_button %}
+
+{% endblock %}
+

@@ -1,0 +1,24 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Page title
+{% endblock %}
+
+{% block content %}
+
+<!--
+Documentation on how to write a django template here:
+https://docs.djangoproject.com/en/dev/topics/templates/
+
+Bootstrap comes pre-loaded, so you can use any Bootstrap elements:
+http://getbootstrap.com/components/
+
+-->
+    <p>
+        This is the end of the experiment. Your payment from the experiment is {{player.payment_net}}.
+        You will additionally receive {{Constants.pay_for_questionnaire}} for answering a short questionnaire
+        at the end of the experiment. Your payment therefore will be {{player.payoff}}.
+    </p>
+
+{% endblock %}

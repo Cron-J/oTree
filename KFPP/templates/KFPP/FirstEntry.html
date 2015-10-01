@@ -1,0 +1,31 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Please answer the following question:
+{% endblock %}
+
+{% block content %}
+
+<!--
+Documentation on how to write a django template here:
+https://docs.djangoproject.com/en/dev/topics/templates/
+
+Bootstrap comes pre-loaded, so you can use any Bootstrap elements:
+http://getbootstrap.com/components/
+
+-->
+    <p>
+        Please click on one of the rows to report how much you are maximally
+        willing to pay for <b>50g of chocolate that is produced with
+        100% sustainable inputs</b>.
+    </p>
+    <img src="{% static "KFPP/chocolate_label2.jpg" %}" style="float:left;width:60%;">
+    <div style="float:left; width: 20%; margin-left: 20%;">
+        {% formfield player.wtp %}
+    </div>
+    <div style="clear:both;"></div>
+
+    {% next_button %}
+
+{% endblock %}

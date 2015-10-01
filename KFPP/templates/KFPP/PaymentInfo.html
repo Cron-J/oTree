@@ -1,0 +1,56 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Payment information
+{% endblock %}
+
+{% block content %}
+
+<!--
+Documentation on how to write a django template here:
+https://docs.djangoproject.com/en/dev/topics/templates/
+
+Bootstrap comes pre-loaded, so you can use any Bootstrap elements:
+http://getbootstrap.com/components/
+
+-->
+    
+    <p>
+        Your payment in this task consists of two parts:
+        <ol>
+            <li>
+                One part of your payment will be determined by the quality of
+                your prediction of B's willingness to pay. The closer your
+                prediction is to B's actually reported willingness to pay,
+                the higher your payment. (Prediction score)
+            </li>
+            <li>
+                Another part of your payment will be determined by the quality
+                of B's prediction of C's willingness to pay. The closer B's
+                prediction is to C's actually reported willingness to pay,
+                the higher your payment. (Information score)
+            </li>
+        </ol>
+    </p>
+    <p>
+        So, you increase your payment not only by making a good
+        prediction about B, but also by providing B with your true
+        willingness to pay. In fact, with this method your expected
+        payment will be highest if you report your willingness to pay
+        truthfully.
+    </p>
+    <p>
+        For each part the minimum payment is {{min_pay}}.
+        This minimum occurs if the actual willingness to pay was
+        predicted to be "Not at all" likely. The maximum payment
+        per part is {{max_pay}}.
+        This will occur if the actual willingness to pay was
+        correctly predicted (i.e. to be "very likely" and all
+        other possible answers were predicted to be "Not at all"
+        likely). For predictions between these two extremes each
+        score takes a value between {{min_pay}} and {{max_pay}}.
+    </p>
+    {% next_button %}
+
+{% endblock %}

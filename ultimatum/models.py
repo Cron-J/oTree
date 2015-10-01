@@ -3,6 +3,7 @@
 from __future__ import division
 from otree.db import models
 import otree.models
+import otree.constants
 from otree import widgets
 from otree.common import Currency as c, currency_range
 import random
@@ -15,7 +16,7 @@ It comes in two flavors, with and without hypothetical questions about the secon
 In the latter treatment, the second player is given a list of all possible offers, and is asked which ones to accept or reject.
 """
 
-class Constants:
+class Constants(otree.constants.BaseConstants):
 
     name_in_url = 'ultimatum'
     players_per_group = 2
@@ -34,8 +35,8 @@ class Subsession(otree.models.BaseSubsession):
     def before_session_starts(self):
         # randomize to treatments
         for g in self.get_groups():
-            if 'treatment' in self.session.session_type:
-                g.strategy = self.session.session_type['treatment'] == 'strategy'
+            if 'treatment' in self.session.config:
+                g.strategy = self.session.config['treatment'] == 'strategy'
             else:
                 g.strategy = random.choice([True, False])
 

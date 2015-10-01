@@ -1,0 +1,34 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Please answer the following question:
+{% endblock %}
+
+{% block content %}
+
+<!--
+Documentation on how to write a django template here:
+https://docs.djangoproject.com/en/dev/topics/templates/
+
+Bootstrap comes pre-loaded, so you can use any Bootstrap elements:
+http://getbootstrap.com/components/
+
+-->
+    <p>
+        Imagine that after your decision, the computer will randomly choose one of the rows.
+        If you had clicked "yes" for the chosen row it would mean that you would have bought 50g of chocolate
+        <strong>produced with 100% sustainable inputs \b0 for the price of this row</strong>.
+    </p>
+    <img src="{% static "KFPP/chocolate_label2.jpg" %}" style="float:left;width:30%;">
+    <div style="float:left; width: 65%; margin-left: 5%;">
+        <h3>Would you be willing to pay...</h3>
+        {% for field in form %}
+            {% formfield field %}
+        {% endfor %}
+    </div>
+    <div style="clear:both;"></div>
+
+    {% next_button %}
+
+{% endblock %}

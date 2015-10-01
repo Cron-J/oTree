@@ -1,0 +1,31 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Result
+{% endblock %}
+
+{% block content %}
+
+<!--
+Documentation on how to write a django template here:
+https://docs.djangoproject.com/en/dev/topics/templates/
+
+Bootstrap comes pre-loaded, so you can use any Bootstrap elements:
+http://getbootstrap.com/components/
+
+-->
+    <p>
+        The computer choose row {{player.rn}}, for which the price was {{player.price}}.
+        You decided to
+        {% if player.deal %}
+            buy the product for this price.
+        {% else %}
+            not buy the product for this price.
+        {% endif %}
+    </p>
+         Your payment from this hypothetical choice is the fixed fee of {{player.payment_net}}
+    {% next_button %}
+{% endblock %}
+
+

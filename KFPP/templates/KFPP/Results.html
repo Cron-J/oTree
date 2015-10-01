@@ -1,0 +1,33 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Page title
+{% endblock %}
+
+{% block content %}
+
+<!--
+Documentation on how to write a django template here:
+https://docs.djangoproject.com/en/dev/topics/templates/
+
+Bootstrap comes pre-loaded, so you can use any Bootstrap elements:
+http://getbootstrap.com/components/
+
+-->
+    <p>
+        Group member B reported to be maximally willing to pay {{reference_player_wtp}}
+        and your prediction for this answer was {{player.scaled_prediction_used}}.
+        Your prediction score therefore is {{player.prediction_score}}
+    </p>
+    <p>
+        Your information score is {{player.information_score}}
+    </p>
+    <p>
+        Your final payment from this task is {{player.payment_net}}
+    </p>
+
+    {% next_button %}
+
+{% endblock %}
+

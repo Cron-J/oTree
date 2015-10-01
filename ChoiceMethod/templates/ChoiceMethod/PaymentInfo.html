@@ -1,0 +1,30 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Payment information
+{% endblock %}
+
+{% block content %}
+
+<!--
+Documentation on how to write a django template here:
+https://docs.djangoproject.com/en/dev/topics/templates/
+
+Bootstrap comes pre-loaded, so you can use any Bootstrap elements:
+http://getbootstrap.com/components/
+
+-->
+    
+    <p>
+        Your payment for this task depends on your decision. You will be presented with {{Constants.num_decisions}} decisions
+        where each time you have to decide whether you are willing to pay the stated amount for a certain
+        product or not. At the end of the task, one of the decisions will be chosen at random. If for the
+        stated amount in that decision you decided to click "yes", you will have bought the product
+        for this price. In this case you will receive the product (sent by post) plus the rest of
+        your endowment. If you clicked "no" you will receive your full endowment of {{Constants.endowment}}.
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

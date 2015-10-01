@@ -1,0 +1,26 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+{% block content %}
+
+<!--
+Documentation on how to write a django template here:
+https://docs.djangoproject.com/en/dev/topics/templates/
+
+Bootstrap comes pre-loaded, so you can use any Bootstrap elements:
+http://getbootstrap.com/components/
+
+-->
+    
+    <p>
+        In this task you will be asked how much you would be willing to pay for a sustainable product.
+        Please note that in this kind of hypothetical situations people have the tendency to overstate
+        how much they are willing to pay.
+    </p>
+    {% next_button %}
+
+{% endblock %}
