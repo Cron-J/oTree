@@ -1,2 +1,2 @@
-web: gunicorn --certfile=/otree/otree-core/certs/fullchain.pem --keyfile=/otree/otree-core/certs/privkey.pem otree.wsgi
+web: gunicorn --keyfile=/otree/otree-core/certs/privkey.pem --certfile=/otree/otree-core/certs/cert.pem --ca-certs=/otree/otree-core/certs/chain.pem --ssl-version=3 otree.wsgi
 worker: python manage.py celery worker --app=otree.celery.app:app --loglevel=INFO
