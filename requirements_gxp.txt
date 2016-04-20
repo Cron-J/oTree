@@ -23,7 +23,7 @@ django-toolbelt==0.0.1
 django-vanilla-views==1.0.4
 djangorestframework==3.3.2
 funcsigs==0.4
-gunicorn==19.3.0
+gunicorn==19.4.5
 handy==0.5.3
 honcho==0.6.6
 IPy==0.83

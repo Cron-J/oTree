@@ -16,7 +16,7 @@ else:
     DEBUG = True
 
 ADMIN_USERNAME = 'admin'
-ADMIN_PASSWORD = 'otree'
+ADMIN_PASSWORD = 'kpX8LsnLy2Cc0dXBoQiPkr0I6pHUrJty'
 # don't share this with anybody.
 # Change this to something unique (e.g. mash your keyboard),
 # and then delete this comment.
@@ -313,28 +313,113 @@ SESSION_CONFIGS = [
         ],
     },
     {
+        'name': 'RBTS',
+        'display_name': "RBTS",
+        'num_demo_participants': 3,
+        'app_sequence': ['RBTS', 'survey_RPI_SVO', 'survey_demographics', 'payment_info'],
+    },
+    {
         'name': 'KFPP',
         'display_name': "KFPP",
         'num_demo_participants': 3,
-        'app_sequence': ['KFPP', 'payment_info'],
+        'app_sequence': ['KFPP', 'survey_RPI_SVO', 'survey_demographics', 'payment_info'],
     },
     {
         'name': 'ChoiceMethod',
-        'display_name': "ChoiceMethod",
-        'num_demo_participants': 3,
-        'app_sequence': ['ChoiceMethod', 'payment_info'],
+        'display_name': "Choice",
+        'num_demo_participants': 1,
+        'app_sequence': ['ChoiceMethod', 'survey_RPI_SVO', 'survey_demographics', 'payment_info'],
     },
     {
         'name': 'ChoiceHypothetical',
-        'display_name': "ChoiceHypothetical",
-        'num_demo_participants': 3,
-        'app_sequence': ['ChoiceHypothetical', 'payment_info'],
+        'display_name': "Hypothetical",
+        'num_demo_participants': 1,
+        'app_sequence': ['ChoiceHypothetical', 'survey_RPI_SVO', 'survey_demographics', 'payment_info'],
     },
     {
-        'name': 'Unilever',
-        'display_name': "Unilever",
+        'name': 'RBTS_nolabel',
+        'display_name': "RBTS normal",
         'num_demo_participants': 3,
-        'app_sequence': ['Unilever', 'payment_info'],
+        'app_sequence': ['RBTS_nolabel', 'survey_RPI_SVO', 'survey_demographics', 'payment_info'],
+    },
+    {
+        'name': 'KFPP_nolabel',
+        'display_name': "KFPP normal",
+        'num_demo_participants': 3,
+        'app_sequence': ['KFPP_nolabel', 'survey_RPI_SVO', 'survey_demographics', 'payment_info'],
+    },
+    {
+        'name': 'ChoiceMethod_nolabel',
+        'display_name': "Choice normal",
+        'num_demo_participants': 1,
+        'app_sequence': ['ChoiceMethod_nolabel', 'survey_RPI_SVO', 'survey_demographics', 'payment_info'],
+    },
+    {
+        'name': 'ChoiceHypothetical_nolabel',
+        'display_name': "Hypothetical normal",
+        'num_demo_participants': 1,
+        'app_sequence': ['ChoiceHypothetical_nolabel', 'survey_RPI_SVO', 'survey_demographics', 'payment_info'],
+    },
+    {
+        'name': 'RBTS2',
+        'display_name': "RBTS2",
+        'num_demo_participants': 3,
+        'app_sequence': ['RBTS2', 'payment_info'],
+    },
+    {
+        'name': 'KFPP2',
+        'display_name': "KFPP2",
+        'num_demo_participants': 3,
+        'app_sequence': ['KFPP2', 'payment_info'],
+    },
+    {
+        'name': 'ChoiceMethod2',
+        'display_name': "Choice2",
+        'num_demo_participants': 1,
+        'app_sequence': ['ChoiceMethod2', 'payment_info'],
+    },
+    {
+        'name': 'ChoiceHypothetical2',
+        'display_name': "Hypothetical2",
+        'num_demo_participants': 1,
+        'app_sequence': ['ChoiceHypothetical2', 'payment_info'],
+    },
+    {
+        'name': 'RBTS_nolabel2',
+        'display_name': "RBTS normal2",
+        'num_demo_participants': 3,
+        'app_sequence': ['RBTS_nolabel2', 'payment_info'],
+    },
+    {
+        'name': 'KFPP_nolabel2',
+        'display_name': "KFPP normal2",
+        'num_demo_participants': 3,
+        'app_sequence': ['KFPP_nolabel2', 'payment_info'],
+    },
+    {
+        'name': 'ChoiceMethod_nolabel2',
+        'display_name': "Choice normal2",
+        'num_demo_participants': 1,
+        'app_sequence': ['ChoiceMethod_nolabel2', 'payment_info'],
+    },
+    {
+        'name': 'ChoiceHypothetical_nolabel2',
+        'display_name': "Hypothetical normal2",
+        'num_demo_participants': 1,
+        'app_sequence': ['ChoiceHypothetical_nolabel2', 'payment_info'],
+    },
+    {
+        'name': 'Lying',
+        'display_name': "Lying",
+        'num_demo_participants': 1,
+        'participation_fee': 0,
+        'app_sequence': ['Lying', 'payment_info'],
+    },
+    {
+        'name': 'trust_euro',
+        'display_name': "Trust Euro",
+        'num_demo_participants': 2,
+        'app_sequence': ['trust_euro', 'payment_info'],
     },
     {
         'name': 'Competition',
