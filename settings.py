@@ -55,7 +55,7 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 
 
 # e.g. EUR, CAD, GBP, CHF, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'USD'
+REAL_WORLD_CURRENCY_CODE = 'EUR'
 USE_POINTS = False
 
 
@@ -118,7 +118,7 @@ mturk_hit_settings = {
 
 SESSION_CONFIG_DEFAULTS = {
     'real_world_currency_per_point': 0.01,
-    'participation_fee': 10.00,
+    'participation_fee': 1.00,
     'num_bots': 12,
     'doc': "",
 
@@ -336,6 +336,30 @@ SESSION_CONFIGS = [
         'num_demo_participants': 3,
         'app_sequence': ['Unilever', 'payment_info'],
     },
+    {
+        'name': 'Competition',
+        'display_name': "Competition",
+        'num_demo_participants': 1,
+        'app_sequence': ['competition'],
+    },
+    {
+        'name': 'Eyes',
+        'display_name': "Eyes",
+        'num_demo_participants': 1,
+        'app_sequence': ['eyes'],
+    },
+    {
+        'name': 'bret',
+        'display_name': "BRET",
+        'num_demo_participants': 1,
+        'app_sequence': ['bret'],
+    },
+    {
+        'name': 'matchingday',
+        'display_name': "Matching Day",
+        'num_demo_participants': 1,
+        'app_sequence': ['competition', 'eyes', 'bret'],
+    }
 ]
 
 
