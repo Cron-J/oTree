@@ -8,6 +8,10 @@ import otree.settings
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
+os.environ['wsgi.url_scheme'] = 'https'
+
 # OTREE_PRODUCTION just controls whether Django runs in
 # DEBUG mode. If OTREE_PRODUCTION==1, then DEBUG=False
 if os.environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
